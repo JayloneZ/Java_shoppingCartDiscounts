@@ -40,4 +40,11 @@ public class ShoppingCartTest {
         customer.removeItemFromCart(rope);
         assertEquals(0, customer.getShoppingCart().size());
     }
+
+    @Test
+    public void canCalculateShoppingCartTotalValue() {
+        customer.addItemToCart(rope);
+        customer.addItemToCart(skiMask);
+        assertEquals(19, customer.getShoppingCartValue());
+    }
 }

@@ -28,4 +28,12 @@ public class Customer {
     public ArrayList<Shoppable> getShoppingCart() {
         return shoppingCart;
     }
+
+    public int getShoppingCartValue() {
+        int totalValue = 0;
+        for (Shoppable item : this.shoppingCart) {
+            totalValue += item.getPrice();
+        }
+        return totalValue;
+    }
 }
