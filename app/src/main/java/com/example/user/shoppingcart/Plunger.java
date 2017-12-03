@@ -5,4 +5,13 @@ package com.example.user.shoppingcart;
  */
 
 public class Plunger implements Shoppable {
+    private int price;
+
+    public Plunger() {
+        this.price = 10;
+    }
+
+    public int getPrice() {
+        return price;
+    }
 }

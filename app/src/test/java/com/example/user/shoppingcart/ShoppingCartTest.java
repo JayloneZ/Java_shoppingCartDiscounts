@@ -32,6 +32,12 @@ public class ShoppingCartTest {
     public void canAddItem() {
         customer.addItemToCart(rope);
         assertEquals(1, customer.getShoppingCart().size());
+    }
 
+    @Test
+    public void canRemoveItem() {
+        customer.addItemToCart(rope);
+        customer.removeItemFromCart(rope);
+        assertEquals(0, customer.getShoppingCart().size());
     }
 }
