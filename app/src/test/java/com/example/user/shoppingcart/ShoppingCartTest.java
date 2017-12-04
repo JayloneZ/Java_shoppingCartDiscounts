@@ -13,78 +13,68 @@ public class ShoppingCartTest {
     Plunger plunger;
     Rope rope;
     SkiMask skiMask;
-    Customer customer;
-    Customer customerLoyal;
+    ShoppingCart shoppingCart;
 
     @Before
     public void before() {
         plunger = new Plunger();
         rope = new Rope();
         skiMask = new SkiMask();
-        customer = new Customer(false);
-        customerLoyal = new Customer(true);
+        shoppingCart = new ShoppingCart();
     }
 
     @Test
     public void shoppingCartStartsEmpty() {
-        assertEquals(0, customer.getShoppingCart().size());
+        assertEquals(0, shoppingCart.getShoppingCart().size());
     }
 
     @Test
     public void canAddItem() {
-        customer.addItemToCart(rope);
-        assertEquals(1, customer.getShoppingCart().size());
+        shoppingCart.addItemToCart(rope);
+        assertEquals(1, shoppingCart.getShoppingCart().size());
     }
 
     @Test
     public void canRemoveItem() {
-        customer.addItemToCart(rope);
-        customer.removeItemFromCart(rope);
-        assertEquals(0, customer.getShoppingCart().size());
+        shoppingCart.addItemToCart(rope);
+        shoppingCart.removeItemFromCart(rope);
+        assertEquals(0, shoppingCart.getShoppingCart().size());
     }
 
     @Test
     public void canClearBasket() {
-        customer.addItemToCart(rope);
-        customer.addItemToCart(skiMask);
-        customer.emptyShoppingCart();
-        assertEquals(0, customer.getShoppingCart().size());
+        shoppingCart.addItemToCart(rope);
+        shoppingCart.addItemToCart(skiMask);
+        shoppingCart.emptyShoppingCart();
+        assertEquals(0, shoppingCart.getShoppingCart().size());
     }
 
     @Test
     public void canCalculateShoppingCartTotalValue() {
-        customer.addItemToCart(rope);
-        customer.addItemToCart(skiMask);
-        assertEquals(19, customer.getValueOfShoppingCart(), 0.1);
+        shoppingCart.addItemToCart(rope);
+        shoppingCart.addItemToCart(skiMask);
+        assertEquals(19, shoppingCart.getValueOfShoppingCart(), 0.1);
     }
 
     @Test
     public void canCalculateShoppingCartValueWithTwoForOne() {
-        customer.addItemToCart(skiMask);
-        customer.addItemToCart(skiMask);
-        assertEquals(4, customer.getValueOfShoppingCart(), 0.1);
+        shoppingCart.addItemToCart(skiMask);
+        shoppingCart.addItemToCart(skiMask);
+        assertEquals(4, shoppingCart.getValueOfShoppingCart(), 0.1);
     }
 
     @Test
     public void tenPercentDiscountNotAppliedWhenUnderTwenty() {
-        customer.addItemToCart(rope);
-        customer.addItemToCart(skiMask);
-        assertEquals(19, customer.getValueOfShoppingCart(), 0.1);
+        shoppingCart.addItemToCart(rope);
+        shoppingCart.addItemToCart(skiMask);
+        assertEquals(19, shoppingCart.getValueOfShoppingCart(), 0.1);
     }
 
     @Test
     public void tenPercentDiscountAppliedWhenOverTwenty() {
-        customer.addItemToCart(rope);
-        customer.addItemToCart(rope);
-        customer.addItemToCart(plunger);
-        assertEquals(22.5, customer.getValueOfShoppingCart(), 0.1);
-    }
-
-    @Test
-    public void canApplyLoyaltyDiscount() {
-        customerLoyal.addItemToCart(rope);
-        customerLoyal.addItemToCart(rope);
-        customerLoyal.addItemToCart(plunger);
-        assertEquals(18, customerLoyal.getValueOfShoppingCart(), 0.1);
+        shoppingCart.addItemToCart(rope);
+        shoppingCart.addItemToCart(rope);
+        shoppingCart.addItemToCart(plunger);
+        assertEquals(22.5, shoppingCart.getValueOfShoppingCart(), 0.1);
     }
 }
