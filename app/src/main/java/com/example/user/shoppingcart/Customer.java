@@ -1,20 +1,26 @@
 package com.example.user.shoppingcart;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by user on 03/12/2017.
  */
 
 public class Customer {
-    private ArrayList<Shoppable> shoppingCart;
+    private HashMap<Shoppable, Integer> shoppingCart;
 
     public Customer() {
-        shoppingCart = new ArrayList<>();
+        shoppingCart = new HashMap<>();
     }
 
     public void addItemToCart(Shoppable item) {
-        this.shoppingCart.add(item);
+        if (shoppingCart.get(item) == null) {
+            this.shoppingCart.put(item, 1);
+        }
+        else {
+            shoppingCart.put(item, shoppingCart.get(item) + 1);
+        }
     }
 
     public void removeItemFromCart(Shoppable item) {
@@ -25,14 +31,23 @@ public class Customer {
         this.shoppingCart.clear();
     }
 
-    public ArrayList<Shoppable> getShoppingCart() {
+    public HashMap<Shoppable, Integer> getShoppingCart() {
         return shoppingCart;
     }
 
-    public int getShoppingCartValue() {
+    public void twoForOneDiscount() {
+        for (Map.Entry<Shoppable, Integer> item : shoppingCart.entrySet()) {
+            Integer twoForOne = (int) Math.ceil(item.getValue() / 2);
+            shoppingCart.put(item.getKey(), twoForOne);
+        }
+    }
+
+    public int getValueOfShoppingCart() {
+        this.twoForOneDiscount();
+
         int totalValue = 0;
-        for (Shoppable item : this.shoppingCart) {
-            totalValue += item.getPrice();
+        for (Map.Entry<Shoppable, Integer> item : shoppingCart.entrySet()) {
+            totalValue += item.getKey().getPrice();
         }
         return totalValue;
     }
