@@ -13,6 +13,6 @@ public class PlungerTest {
     @Test
     public void canGetPrice() {
         Plunger plunger = new Plunger();
-        assertEquals(10, plunger.getPrice());
+        assertEquals(10, plunger.getPrice(), 0.1);
     }
 }

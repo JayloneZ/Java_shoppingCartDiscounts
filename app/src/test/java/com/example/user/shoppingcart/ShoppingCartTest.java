@@ -53,13 +53,16 @@ public class ShoppingCartTest {
     public void canCalculateShoppingCartTotalValue() {
         customer.addItemToCart(rope);
         customer.addItemToCart(skiMask);
-        assertEquals(19, customer.getValueOfShoppingCart());
+        assertEquals(19, customer.getValueOfShoppingCart(), 0.1);
     }
 
     @Test
     public void canCalculateShoppingCartValueWithTwoForOne() {
         customer.addItemToCart(rope);
         customer.addItemToCart(rope);
-        assertEquals(15, customer.getValueOfShoppingCart());
+        assertEquals(15, customer.getValueOfShoppingCart(), 0.1);
     }
+
+//    @Test
+//    public void
 }

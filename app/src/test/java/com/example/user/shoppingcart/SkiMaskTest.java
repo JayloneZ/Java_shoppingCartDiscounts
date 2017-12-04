@@ -13,6 +13,6 @@ public class SkiMaskTest {
     @Test
     public void canGetPrice() {
         SkiMask skiMask = new SkiMask();
-        assertEquals(4, skiMask.getPrice());
+        assertEquals(4, skiMask.getPrice(), 0.1);
     }
 }

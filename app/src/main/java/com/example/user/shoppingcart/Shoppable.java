@@ -6,5 +6,5 @@ package com.example.user.shoppingcart;
 
 public interface Shoppable {
 
-    public int getPrice();
+    public double getPrice();
 }

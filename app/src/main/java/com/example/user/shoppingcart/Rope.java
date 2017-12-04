@@ -5,13 +5,13 @@ package com.example.user.shoppingcart;
  */
 
 public class Rope implements Shoppable {
-    private int price;
+    private double price;
 
     public Rope() {
         this.price = 15;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 }

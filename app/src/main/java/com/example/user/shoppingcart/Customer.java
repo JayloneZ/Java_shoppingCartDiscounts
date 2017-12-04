@@ -42,13 +42,23 @@ public class Customer {
         }
     }
 
-    public int getValueOfShoppingCart() {
+    public double getValueOfShoppingCart() {
         this.twoForOneDiscount();
 
-        int totalValue = 0;
+        double totalValue = 0;
         for (Map.Entry<Shoppable, Integer> item : shoppingCart.entrySet()) {
             totalValue += item.getKey().getPrice();
         }
+
+        totalValue = this.twentyPercentDiscount(totalValue);
         return totalValue;
     }
+
+    public double twentyPercentDiscount(double cartValue) {
+        if (cartValue >= 20) {
+            cartValue = (cartValue * 0.9);
+        }
+        return cartValue;
+    }
+
 }

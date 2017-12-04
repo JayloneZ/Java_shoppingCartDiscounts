@@ -13,6 +13,6 @@ public class RopeTest {
     @Test
     public void canGetPrice() {
         Rope rope = new Rope();
-        assertEquals(15, rope.getPrice());
+        assertEquals(15, rope.getPrice(), 0.1);
     }
 }
