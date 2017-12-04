@@ -58,11 +58,23 @@ public class ShoppingCartTest {
 
     @Test
     public void canCalculateShoppingCartValueWithTwoForOne() {
-        customer.addItemToCart(rope);
-        customer.addItemToCart(rope);
-        assertEquals(15, customer.getValueOfShoppingCart(), 0.1);
+        customer.addItemToCart(skiMask);
+        customer.addItemToCart(skiMask);
+        assertEquals(4, customer.getValueOfShoppingCart(), 0.1);
     }
 
-//    @Test
-//    public void
+    @Test
+    public void tenPercentDiscountNotAppliedWhenUnderTwenty() {
+        customer.addItemToCart(rope);
+        customer.addItemToCart(skiMask);
+        assertEquals(19, customer.getValueOfShoppingCart(), 0.1);
+    }
+
+    @Test
+    public void tenPercentDiscountAppliedWhenOverTwenty() {
+        customer.addItemToCart(rope);
+        customer.addItemToCart(rope);
+        customer.addItemToCart(plunger);
+        assertEquals(22.5, customer.getValueOfShoppingCart(), 0.1);
+    }
 }

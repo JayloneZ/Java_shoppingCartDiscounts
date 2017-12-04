@@ -50,11 +50,11 @@ public class Customer {
             totalValue += item.getKey().getPrice();
         }
 
-        totalValue = this.twentyPercentDiscount(totalValue);
+        totalValue = this.tenPercentDiscount(totalValue);
         return totalValue;
     }
 
-    public double twentyPercentDiscount(double cartValue) {
+    public double tenPercentDiscount(double cartValue) {
         if (cartValue >= 20) {
             cartValue = (cartValue * 0.9);
         }
