@@ -9,9 +9,11 @@ import java.util.Map;
 
 public class Customer {
     private HashMap<Shoppable, Integer> shoppingCart;
+    private boolean loyaltyCard;
 
-    public Customer() {
-        shoppingCart = new HashMap<>();
+    public Customer(boolean loyaltyCard) {
+        this.shoppingCart = new HashMap<>();
+        this.loyaltyCard = loyaltyCard;
     }
 
     public void addItemToCart(Shoppable item) {
@@ -42,6 +44,20 @@ public class Customer {
         }
     }
 
+    public double tenPercentDiscount(double cartValue) {
+        if (cartValue >= 20) {
+            cartValue = (cartValue * 0.9);
+        }
+        return cartValue;
+    }
+
+    public double twentyPercentLoyaltyDiscount(double cartValue) {
+        if (this.loyaltyCard) {
+            cartValue = (cartValue * 0.8);
+        }
+        return cartValue;
+    }
+
     public double getValueOfShoppingCart() {
         this.twoForOneDiscount();
 
@@ -51,14 +67,8 @@ public class Customer {
         }
 
         totalValue = this.tenPercentDiscount(totalValue);
+        totalValue = this.twentyPercentLoyaltyDiscount(totalValue);
         return totalValue;
-    }
-
-    public double tenPercentDiscount(double cartValue) {
-        if (cartValue >= 20) {
-            cartValue = (cartValue * 0.9);
-        }
-        return cartValue;
     }
 
 }
