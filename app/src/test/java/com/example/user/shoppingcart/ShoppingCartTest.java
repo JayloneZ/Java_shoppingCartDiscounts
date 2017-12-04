@@ -20,25 +20,25 @@ public class ShoppingCartTest {
         plunger = new Plunger();
         rope = new Rope();
         skiMask = new SkiMask();
-        shoppingCart = new ShoppingCart();
+        shoppingCart = new ShoppingCart(false);
     }
 
     @Test
     public void shoppingCartStartsEmpty() {
-        assertEquals(0, shoppingCart.getShoppingCart().size());
+        assertEquals(0, shoppingCart.getAmountOfIndividualItems());
     }
 
     @Test
     public void canAddItem() {
         shoppingCart.addItemToCart(rope);
-        assertEquals(1, shoppingCart.getShoppingCart().size());
+        assertEquals(1, shoppingCart.getAmountOfIndividualItems());
     }
 
     @Test
     public void canRemoveItem() {
         shoppingCart.addItemToCart(rope);
         shoppingCart.removeItemFromCart(rope);
-        assertEquals(0, shoppingCart.getShoppingCart().size());
+        assertEquals(0, shoppingCart.getAmountOfIndividualItems());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ShoppingCartTest {
         shoppingCart.addItemToCart(rope);
         shoppingCart.addItemToCart(skiMask);
         shoppingCart.emptyShoppingCart();
-        assertEquals(0, shoppingCart.getShoppingCart().size());
+        assertEquals(0, shoppingCart.getAmountOfIndividualItems());
     }
 
     @Test

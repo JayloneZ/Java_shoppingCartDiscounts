@@ -17,6 +17,10 @@ public class ShoppingCart {
         this.loyaltyCard = loyaltyCard;
     }
 
+    public int getAmountOfIndividualItems() {
+        return this.shoppingCart.size();
+    }
+
     public void addItemToCart(Shoppable item) {
         if (shoppingCart.get(item) == null) {
             this.shoppingCart.put(item, 1);
@@ -32,10 +36,6 @@ public class ShoppingCart {
 
     public void emptyShoppingCart() {
         this.shoppingCart.clear();
-    }
-
-    public HashMap<Shoppable, Integer> getShoppingCart() {
-        return shoppingCart;
     }
 
     public void twoForOneDiscount() {

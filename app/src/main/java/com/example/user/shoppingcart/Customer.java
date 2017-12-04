@@ -16,8 +16,12 @@ public class Customer {
         this.loyaltyCard = loyaltyCard;
     }
 
-    public ShoppingCart getShoppingCart() {
-        return shoppingCart;
+    public int getAmountOfIndividualItems() {
+        return this.shoppingCart.getAmountOfIndividualItems();
+    }
+
+    public boolean getLoyaltyCard() {
+        return loyaltyCard;
     }
 
     public void addItemToCart(Shoppable item) {
