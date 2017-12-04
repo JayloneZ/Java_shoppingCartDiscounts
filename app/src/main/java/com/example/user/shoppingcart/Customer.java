@@ -1,7 +1,5 @@
 package com.example.user.shoppingcart;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by user on 03/12/2017.
@@ -10,10 +8,16 @@ import java.util.Map;
 public class Customer {
     private ShoppingCart shoppingCart;
     private boolean loyaltyCard;
+    private Discount discount;
 
     public Customer(boolean loyaltyCard) {
         this.shoppingCart = new ShoppingCart(loyaltyCard);
         this.loyaltyCard = loyaltyCard;
+        this.discount = new Discount(loyaltyCard);
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return this.shoppingCart;
     }
 
     public int getAmountOfIndividualItems() {
@@ -36,8 +40,18 @@ public class Customer {
         this.shoppingCart.emptyShoppingCart();
     }
 
+    public double getValueOfShoppingCartWithoutDiscount() {
+        return this.shoppingCart.getValueOfShoppingCartWithoutDiscount();
+    }
+
     public double getValueOfShoppingCart() {
-        return this.shoppingCart.getValueOfShoppingCart();
+        this.discount.twoForOneDiscount();
+
+        double totalValue = this.getValueOfShoppingCartWithoutDiscount();
+
+        totalValue = this.discount.tenPercentDiscount(totalValue);
+        totalValue = this.discount.twentyPercentLoyaltyDiscount(totalValue);
+        return totalValue;
     }
 
 }

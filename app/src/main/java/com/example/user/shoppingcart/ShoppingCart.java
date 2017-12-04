@@ -17,6 +17,10 @@ public class ShoppingCart {
         this.loyaltyCard = loyaltyCard;
     }
 
+    public HashMap<Shoppable, Integer> getShoppingCart() {
+        return this.shoppingCart;
+    }
+
     public int getAmountOfIndividualItems() {
         return this.shoppingCart.size();
     }
@@ -38,42 +42,11 @@ public class ShoppingCart {
         this.shoppingCart.clear();
     }
 
-    public void twoForOneDiscount() {
-        for (Map.Entry<Shoppable, Integer> item : shoppingCart.entrySet()) {
-            Integer twoForOne = (int) Math.ceil(item.getValue() / 2);
-            shoppingCart.put(item.getKey(), twoForOne);
-        }
-    }
-
-    public double tenPercentDiscount(double cartValue) {
-        if (cartValue >= 20) {
-            cartValue = (cartValue * 0.9);
-        }
-        return cartValue;
-    }
-
-    public double twentyPercentLoyaltyDiscount(double cartValue) {
-        if (this.loyaltyCard) {
-            cartValue = (cartValue * 0.8);
-        }
-        return cartValue;
-    }
-
     public double getValueOfShoppingCartWithoutDiscount() {
         double totalValue = 0;
         for (Map.Entry<Shoppable, Integer> item : shoppingCart.entrySet()) {
             totalValue += item.getKey().getPrice();
         }
-        return totalValue;
-    }
-
-    public double getValueOfShoppingCart() {
-        this.twoForOneDiscount();
-
-        double totalValue = this.getValueOfShoppingCartWithoutDiscount();
-
-        totalValue = this.tenPercentDiscount(totalValue);
-        totalValue = this.twentyPercentLoyaltyDiscount(totalValue);
         return totalValue;
     }
 }

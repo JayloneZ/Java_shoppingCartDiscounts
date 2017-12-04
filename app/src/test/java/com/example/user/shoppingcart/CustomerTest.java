@@ -14,7 +14,6 @@ public class CustomerTest {
     Rope rope;
     SkiMask skiMask;
     Customer customer;
-    ShoppingCart shoppingCart;
 
     @Before
     public void before() {
@@ -22,7 +21,6 @@ public class CustomerTest {
         rope = new Rope();
         skiMask = new SkiMask();
         customer = new Customer(false);
-        shoppingCart = new ShoppingCart(customer.getLoyaltyCard());
     }
 
     @Test
